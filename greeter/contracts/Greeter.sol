@@ -2,6 +2,7 @@ pragma solidity >= 0.4.0  < 0.7.0;
 
 contract Greeter {
   string private _greeting;
+  address private _owner;
 
   // external: callable from other contract
   // view: read only (pure: does not read and write)
@@ -15,5 +16,8 @@ contract Greeter {
     _greeting = greeting;
   }
 
+  function owner() external view returns(address) {
+    return _owner;
+  }
 }
 
