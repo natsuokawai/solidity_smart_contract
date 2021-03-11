@@ -1,6 +1,6 @@
 pragma solidity >= 0.4.0  < 0.7.0;
 
-import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
+import "openzeppelin-solidity/contracts/access/Ownable.sol";
 
 contract Greeter is Ownable {
   string private _greeting;
@@ -20,6 +20,10 @@ contract Greeter is Ownable {
     );
     _;
   }
+
+  function owner() external view returns(address) {
+    return owner;
+  }
   */
 
   // external: callable from other contract
@@ -32,10 +36,6 @@ contract Greeter is Ownable {
   // calldata: required because of external function and reference type argument
   function setGreeting(string calldata greeting)  external onlyOwner {
     _greeting = greeting;
-  }
-
-  function owner() external view returns(address) {
-    return _owner;
   }
 }
 
