@@ -1,7 +1,12 @@
 pragma solidity >= 0.4.0  < 0.7.0;
 
-contract Greeter {
+import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
+
+contract Greeter is Ownable {
   string private _greeting;
+
+  // The following lines can be deleted because this contract imports Ownable
+  /*
   address private _owner;
 
   constructor() public {
@@ -15,6 +20,7 @@ contract Greeter {
     );
     _;
   }
+  */
 
   // external: callable from other contract
   // view: read only (pure: does not read and write)
