@@ -4,6 +4,7 @@ import "./Fundraiser.sol";
 
 contract FundraiserFactory {
   Fundraiser[] private _fundraisers;
+  event FundraiserCreated(Fundraiser indexed fundraiser, address indexed owner);
 
   function createFundraiser(
     string memory name,
@@ -23,6 +24,7 @@ contract FundraiserFactory {
       msg.sender
     );
     _fundraisers.push(fundraiser);
+    emit FundraiserCreated(fundraiser, fundraiser.owner());
   }
 
   function fundraisersCount() public view returns(uint256) {
